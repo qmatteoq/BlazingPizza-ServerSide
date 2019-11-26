@@ -35,10 +35,10 @@ namespace BlazingPizza
             services.AddServerSideBlazor();
             services.AddScoped<OrderState>();
 
-            services.AddSignalR().AddAzureSignalR(options =>
-            {
-                options.ServerStickyMode = Microsoft.Azure.SignalR.ServerStickyMode.Required;
-            });
+            //services.AddSignalR().AddAzureSignalR(options =>
+            //{
+            //    options.ServerStickyMode = Microsoft.Azure.SignalR.ServerStickyMode.Required;
+            //});
 
             services.AddResponseCompression(options =>
             {
