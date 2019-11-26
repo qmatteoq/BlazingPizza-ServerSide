@@ -46,13 +46,11 @@ namespace BlazingPizza
                     new[] { MediaTypeNames.Application.Octet });
             });
 
-            // Setup HttpClient for server side in a client side compatible fashion
             services.AddScoped<HttpClient>(s =>
             {
-                // Creating the URI helper needs to wait until the JS Runtime is initialized, so defer it.
                 return new HttpClient
                 {
-                    BaseAddress = new Uri("https://blazingpizza.azurewebsites.net/")
+                    BaseAddress = new Uri(Configuration["BaseUrl"])
                 };
             });
 
@@ -90,11 +88,11 @@ namespace BlazingPizza
             }
 
             app.UseAuthentication();
-            
+
 
             app.UseHttpsRedirection();
 
-            app.UseStaticFiles();            
+            app.UseStaticFiles();
 
             app.UseRouting();
 
